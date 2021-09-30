@@ -1,2 +1,2 @@
-# DiscordBotWebApp
-Spring MVC web application that controls the discord bot and shows any applicable info
+# DiscordBotManager
+Distributed microservices architecture for controlling a Discord bot. 
