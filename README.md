@@ -1,7 +1,7 @@
 # DiscordBotManager
 ## About
 
-A distributed microservices architecture for managing a Discord bot through a web dashboard. The current idea is that all the different microservices are contained within this monorepo and then seperately deployed to individual containers using CI/CD scripts to keep the codebase standardized and easily visible.
+A Spring Boot microservices architecture for managing a Discord bot through a web dashboard. The current idea is that all the different microservices are contained within this monorepo and then seperately deployed to individual containers using CI/CD scripts to keep the codebase standardized and easily visible.
 
 ![alt text](https://github.com/FHICT-S-Owen/S3-IPS-DOCS/blob/main/Container%20diagram.jpg?raw=true)
 
