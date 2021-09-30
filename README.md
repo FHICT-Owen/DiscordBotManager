@@ -5,6 +5,8 @@ A Spring Boot microservices architecture for managing a Discord bot through a we
 
 ![alt text](https://github.com/FHICT-S-Owen/S3-IPS-DOCS/blob/main/Container%20diagram.jpg?raw=true)
 
+To seperate all these containers while using a monorepo there will be seperate sub folders in this repo that contain the different microservices. These microservices will each have their own development branch and testing/deployment branch, furthermore commits will only be pulled through to the production branch once they have been properly tested.
+
 ## Disclaimer
 
 This repository will make use of Spring Boot to create the different microservices. As setting up HTTPS in Java Spring Boot requires getting an SSL certificate we'll make use of HTTP instead. This means the api calls between services are less secure.
