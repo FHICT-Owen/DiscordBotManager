@@ -3,8 +3,8 @@ server:
 
 logging:
   level:
-    root: ERROR
-    org.springframework.web: ERROR
+    root: INFO
+    org.springframework.web: INFO
     com.auth0.example: TRACE
 
 spring:

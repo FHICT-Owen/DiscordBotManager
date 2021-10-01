@@ -1,4 +1,4 @@
-package com.owendb.mvcdiscordweb;
+package com.owendb.mvcwebapp;
 
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;

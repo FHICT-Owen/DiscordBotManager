@@ -9,12 +9,12 @@
         <relativePath/> <!-- lookup parent from repository -->
     </parent>
     <groupId>com.owendb</groupId>
-    <artifactId>MVCDiscordWeb</artifactId>
+    <artifactId>MVCWebApp</artifactId>
     <version>0.0.1-SNAPSHOT</version>
-    <name>MVCDiscordWeb</name>
-    <description>MVCDiscordWeb</description>
+    <name>MVCWebApp</name>
+    <description>MVCWebApp</description>
     <properties>
-        <java.version>17</java.version>
+        <java.version>11</java.version>
     </properties>
     <dependencies>
         <dependency>
@@ -41,6 +41,13 @@
             <groupId>com.fasterxml.jackson.datatype</groupId>
             <artifactId>jackson-datatype-jsr310</artifactId>
             <version>2.12.5</version>
+        </dependency>
+
+        <dependency>
+            <groupId>org.springframework.boot</groupId>
+            <artifactId>spring-boot-devtools</artifactId>
+            <scope>runtime</scope>
+            <optional>true</optional>
         </dependency>
         <dependency>
             <groupId>org.springframework.boot</groupId>

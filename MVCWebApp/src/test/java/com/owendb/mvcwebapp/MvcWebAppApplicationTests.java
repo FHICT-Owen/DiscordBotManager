@@ -1,10 +1,10 @@
-package com.owendb.mvcdiscordweb;
+package com.owendb.mvcwebapp;
 
 import org.junit.jupiter.api.Test;
 import org.springframework.boot.test.context.SpringBootTest;
 
 @SpringBootTest
-class MvcDiscordWebApplicationTests {
+class MvcWebAppApplicationTests {
 
     @Test
     void contextLoads() {

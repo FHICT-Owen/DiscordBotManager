@@ -1,4 +1,4 @@
-package com.owendb.mvcdiscordweb;
+package com.owendb.mvcwebapp;
 
 import org.springframework.context.annotation.Configuration;
 import org.springframework.security.config.annotation.web.builders.HttpSecurity;
