@@ -28,6 +28,7 @@ Before creating the project I'll have to do research on the implications of usin
     * What effects do monorepo's have on CI/CD vs polyrepo's?
 2. What alternatives to securing API's using HTTPS are available?
     * How does HTTP compare to HTTPS?
+    * Is it better to encrypt your API data calls or to just send encrypted login details with the calls?
 
 ### Method
 Now that the questions are formulated, we can use the DOT framework using the following methods and strategies to answer
