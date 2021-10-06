@@ -27,6 +27,9 @@
                     <li class="nav-item">
                         <a href="/" class="nav-link">Home</a>
                     </li>
+                    <li sec:authorize="isAuthenticated()" class="nav-item">
+                        <a href="/pages/dashboard" class="nav-link">Dashboard</a>
+                    </li>
                 </ul>
                 <ul class="navbar-nav d-none d-md-block">
 
@@ -50,7 +53,7 @@
                         <div class="dropdown-menu dropdown-menu-left">
                             <!-- Show the user's full name from the id token here -->
                             <div class="dropdown-header" th:text="${profile.get('name')}"></div>
-                            <a href="/profile" class="dropdown-item dropdown-profile">
+                            <a href="/pages/profile" class="dropdown-item dropdown-profile">
                                 <i class="fas fa-user mr-3"></i> Profile
                             </a>
                             <a id="qsLogoutBtn" th:href="@{/logout}" class="dropdown-item">
