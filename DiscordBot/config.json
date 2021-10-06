@@ -1,0 +1,18 @@
+{
+  "default_prefix": "$",
+  "owner": "190833902020067329",
+  "guildid": "787315610102530048",
+  "premium": "682981714523586606",
+  "PREFIX": "q",
+  "mongodb": "",
+  "database": "",
+  "BOT_ID": "744597377406599188",
+  "embedcolor": "BLUE",
+  "EMOJI_ARROW": "🔄",
+  "WELCOME_CHANNEL": "815889737750544405",
+  "QUEUE_LIMIT": 2,
+  "AME_API": "",
+  "COLOR": "00FFFF",
+  "mongourl": ""
+}
+
