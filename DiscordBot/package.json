@@ -45,6 +45,7 @@
     "i": "^0.3.6",
     "imdb-api": "^4.2.0",
     "instagram-api.js": "0.0.8",
+    "ip": "^1.1.5",
     "mal-scraper": "^2.11.3",
     "mathjs": "^7.1.0",
     "moment": "^2.27.0",
@@ -96,5 +97,12 @@
     "node",
     "glitch",
     "express"
-  ]
+  ],
+  "devDependencies": {
+    "eslint": "^7.32.0",
+    "eslint-config-standard": "^16.0.3",
+    "eslint-plugin-import": "^2.24.2",
+    "eslint-plugin-node": "^11.1.0",
+    "eslint-plugin-promise": "^5.1.0"
+  }
 }

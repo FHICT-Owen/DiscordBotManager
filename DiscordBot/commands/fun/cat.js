@@ -1,7 +1,6 @@
 const superagent = require("snekfetch");
 const Discord = require('discord.js')
 
-
 module.exports = {
   name: "cat",
   category: "fun",

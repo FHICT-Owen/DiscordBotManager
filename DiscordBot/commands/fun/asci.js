@@ -1,4 +1,3 @@
-const discord = require("discord.js");
 const figlet = require("figlet"); // MAKE SURE TO INSTALL FIGLET PACKAGE OR CODE WONT WORK
 
 module.exports = {
