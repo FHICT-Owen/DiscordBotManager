@@ -17,7 +17,7 @@ client.vote = new Map();
 const port = process.argv.slice (2)[0];
 const app = express();
 
-require(`./eureka/eureka-helper`).registerWithEureka(`discord-bot`, port);
+require(`./eureka/eureka-helper`).registerWithEureka(`DISCORD-BOT`, port);
 cn.log(`Eureka`,`Service listening on port ${port}`);
 app.listen(port);
 
