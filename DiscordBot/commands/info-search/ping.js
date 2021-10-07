@@ -1,16 +1,16 @@
-const discord = require("discord.js");
+const discord = require(`discord.js`);
 
 module.exports = {
-  name: "ping",
-  category: "info",
-  description: "Returns latency and API ping",
-  run: async (client, message, args) => {
+  name: `ping`,
+  category: `info`,
+  description: `Returns latency and API ping`,
+  run: async (client, message) => {
     
-    let embed = new discord.MessageEmbed()
-    .setDescription(`Pong - ${client.ws.ping}ms`)
-    .setColor("RANDOM")
-    .setFooter(`Requested by ${message.author.username}`)
+    const embed = new discord.MessageEmbed()
+      .setDescription(`Pong - ${client.ws.ping}ms`)
+      .setColor(`RANDOM`)
+      .setFooter(`Requested by ${message.author.username}`);
     
-    message.channel.send(embed)
+    message.channel.send(embed);
   }
-}
+};
