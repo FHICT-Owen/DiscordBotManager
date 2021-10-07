@@ -1,53 +1,52 @@
-const axios = require('axios');
-const ip = require('ip');
+const axios = require(`axios`);
+const ip = require(`ip`);
+const cn = require(`../functions/console.js`);
 
 module.exports = {
   registerWithEureka: (appName, port) => {
-    console.log(`Registering ${appName} with Eureka`);
+    cn.log(`Eureka`, `Registering ${appName} with Eureka`);
     axios({
-      method: 'post',
-      headers: { 'content-type': 'application/json' },
-      baseURL: 'http://localhost:8761/eureka',
-      url: `/apps/${appName}`,
+      method: `post`,
+      headers: { 'content-type': `application/json` },
+      url: `http://localhost:8761/eureka/apps/${appName}`,
       body: JSON.stringify({
         instance: {
-          hostName: 'localhost',
+          hostName: `localhost`,
           instanceId: `${appName}-${port}`,
           vipAddress: `${appName}`,
           app: `${appName.toUpperCase()}`,
           ipAddr: ip.address(),
-          status: 'UP',
+          status: `UP`,
           port: {
             $: port,
             '@enabled': true
           },
           dataCenterInfo: {
-            '@class': 'com.netflix.appinfo.InstanceInfo$DefaultDataCenterInfo',
-            name: 'MyOwn'
+            '@class': `com.netflix.appinfo.InstanceInfo$DefaultDataCenterInfo`,
+            name: `MyOwn`
           }
         }
       })
     },
     (error) => {
       if (!error) {
-        console.log('Registered with Eureka');
+        cn.log(`Eureka`,`Registered with Eureka`);
         setInterval(() =>{
           axios({
-            method: 'put',
-            headers: { 'content-type': 'application/json' }['content-type'],
-            baseURL: 'http://localhost:8761/eureka',
-            url: `/apps/${appName}/${appName}-${port}`,
+            method: `put`,
+            headers: { 'content-type': `application/json` }[`content-type`],
+            url: `http://localhost:8761/eureka/apps/${appName}/${appName}-${port}`,
           }, (error => {
-            if (error) {
-              console.log('Sending heartbeat to Eureka failed.');
-            } else {
-              console.log('Successfully sent heartbeat to Eureka.');
-            }
+            if (error) 
+              console.log(`Sending heartbeat to Eureka failed.`);
+            else 
+              console.log(`Successfully sent heartbeat to Eureka.`);
+            
           }));
         }, 50 * 1000);
-      } else {
-        console.log(`Not registered with eureka due to: ${error}`);
-      }
+      } else 
+        cn.error(`Eureka`, `Not registered with eureka due to: ${error}`);
+      
     }
     );
   }
