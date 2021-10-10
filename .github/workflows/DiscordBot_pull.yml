@@ -28,7 +28,5 @@ jobs:
           EOF
       - name: Add backend remote origin
         run: heroku git:remote -a ${{ secrets.HEROKU_DISCORDBOT_APP_NAME }}
-      - name: git:remote add 
-        run: 
       - name: Deploy backend to Heroku
         run: git push heroku `git subtree split --prefix=DiscordBot --branch=Develop_DiscordBot`:refs/heads/master --force
