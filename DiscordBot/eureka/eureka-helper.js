@@ -3,7 +3,7 @@ const ip = require(`ip`);
 const cn = require(`../functions/console.js`);
 
 module.exports = {
-  registerWithEureka: (appName, port) => {
+  registerWithEureka(appName, port) {
     cn.log(`Eureka`, `Registering ${appName} with Eureka`);
 
     const body = JSON.stringify({
