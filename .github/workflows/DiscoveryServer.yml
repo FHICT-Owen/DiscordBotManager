@@ -6,11 +6,6 @@ on:
     paths:
       - "DiscoveryServer/**"
       - ".github/workflows/DiscoveryServer.yml"
-  pull_request:
-    branches: Production
-    paths:
-      - "DiscoveryServer/**"
-      - ".github/workflows/DiscoveryServer.yml"
   workflow_dispatch:
 
 jobs:

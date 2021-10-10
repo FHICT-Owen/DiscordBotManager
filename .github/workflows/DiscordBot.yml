@@ -6,11 +6,6 @@ on:
     paths:
       - "DiscordBot/**"
       - ".github/workflows/DiscordBot.yml"
-  pull_request:
-    branches: Production
-    paths:
-      - "DiscordBot/**"
-      - ".github/workflows/DiscordBot.yml"
   workflow_dispatch:
 
 jobs:
