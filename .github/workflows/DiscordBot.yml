@@ -21,4 +21,4 @@ jobs:
       - name: Add backend remote origin
         run: git remote add heroku-backend https://heroku:${{ secrets.HEROKU_API_TOKEN }}@git.heroku.com/${{ secrets.HEROKU_DISCORDBOT_APP_NAME }}.git
       - name: Deploy backend to Heroku
-        run: git push heroku-backend `git subtree split --prefix backend master`:refs/heads/master --force
+        run: git push heroku-backend `git subtree add --prefix discordbot master`:refs/heads/master --force
