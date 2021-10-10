@@ -17,7 +17,7 @@ client.vote = new Map();
 const port = process.argv.slice (2)[0];
 const app = express();
 
-require(`./eureka/eureka-helper`).registerWithEureka(`discord-bot`, port);
+require(`./eureka/eureka-helper`).registerWithEureka(`DISCORD-BOT`, port);
 cn.log(`Eureka`,`Service listening on port ${port}`);
 app.listen(port);
 
@@ -134,13 +134,13 @@ client.on(`message`, async message => {
 
 client.login(process.env.TOKEN || client.config.token)
   .then(
-    function() {
+    () => {
       client.user.setActivity(`The Network`, { type: `WATCHING` });
       cn.log(`Startup`, `| Logged in as ${client.user.username}#${client.user.discriminator}`);
       cn.log(`Guilds`, `| Connected to ${client.guilds.cache.size} guild${client.guilds.cache.size > 1 ? `s ` : ` `}`);
       if (client.guilds.cache.size > 1) cn.error(`Warn`, `Keep in mind that this bot is not optimized for multiple servers so use caution!`);
     },
-    function (err) {
+    (err) => {
       require(path.join(__dirname, `functions/console.js`)).error(`Login`, err);
     }
   )
