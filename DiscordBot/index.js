@@ -4,6 +4,10 @@ const { CanvasSenpai } = require(`canvas-senpai`);
 const canva = new CanvasSenpai();
 const discord = require(`discord.js`);
 const express = require(`express`);
+const helmet = require(`helmet`);
+const morgan = require(`morgan`);
+const jwt = require(`express-jwt`);
+const jwksRsa = require(`jwks-rsa`);
 const client = new discord.Client({
   disableEveryone: false
 });
@@ -11,15 +15,30 @@ const client = new discord.Client({
 const cn = require(`./functions/console.js`);
 client.config = require(`./config.json`);
 client.log = require(`./functions/log.js`);
+client.app = express();
 client.queue = new Map();
 client.vote = new Map();
 
 const port = process.argv.slice (2)[0];
-const app = express();
+if (!port) process.exit(cn.error(`PORT`, `Port was not properly defined! Killing App.`));
 
-require(`./eureka/eureka-helper`).registerWithEureka(`DISCORD-BOT`, port);
-cn.log(`Eureka`,`Service listening on port ${port}`);
-app.listen(port);
+const checkJwt = jwt({
+  secret: jwksRsa.expressJwtSecret({
+    cache: true,
+    rateLimit: true,
+    jwksRequestsPerMinute: 5,
+    jwksUri: `https://dev-cgiwratest.eu.auth0.com/.well-known/jwks.json`
+  }),
+
+  audience: `https://discord-bot/`,
+  issuer:`https://dev-cgiwratest.eu.auth0.com/`,
+  algorithms: [`RS256`]
+});
+
+client.app.use(checkJwt);
+client.app.use(helmet());
+client.app.use(express.json());
+client.app.use(morgan(`combined`));
 
 client.axios = axios.create({
   baseURL: `http://log-service/`,
@@ -32,6 +51,14 @@ client.aliases = new discord.Collection();
 [`command`].forEach(handler => {
   require(`./handlers/${handler}`)(client);
 });
+require(`./functions/api.js`)(client);
+
+client.app.listen(port, () => {
+  cn.log(`Eureka`, `Client listening on port ${port}`);
+  cn.log(`API`, `Service listening on port ${port}`);
+});
+require(`./api/eureka-helper.js`).registerWithEureka(`DISCORD-BOT`, port);
+
 client.queue = new Map();
 process.on(`unhandledRejection`, error => console.error(`Uncaught Promise Rejection`, error));
 process.on(`uncaughtException`, error => console.error(`Uncaught exception`, error));
@@ -136,9 +163,8 @@ client.login(process.env.TOKEN || client.config.token)
   .then(
     () => {
       client.user.setActivity(`The Network`, { type: `WATCHING` });
-      cn.log(`Startup`, `| Logged in as ${client.user.username}#${client.user.discriminator}`);
-      cn.log(`Guilds`, `| Connected to ${client.guilds.cache.size} guild${client.guilds.cache.size > 1 ? `s ` : ` `}`);
-      if (client.guilds.cache.size > 1) cn.error(`Warn`, `Keep in mind that this bot is not optimized for multiple servers so use caution!`);
+      cn.log(`Startup`, `Logged in as ${client.user.username}#${client.user.discriminator}`);
+      cn.log(`Guilds`, `Connected to ${client.guilds.cache.size} guild${client.guilds.cache.size > 1 ? `s ` : ` `}`);
     },
     (err) => {
       require(path.join(__dirname, `functions/console.js`)).error(`Login`, err);
