@@ -2,7 +2,7 @@ name: DynamicRoutingServer CI/CD
 
 on:
   pull_request:
-    branches: production
+    branches: Production
     paths:
       - "DynamicRoutingServer/**"
       - ".github/workflows/DynamicRoutingServer.yml"
