@@ -1,0 +1,32 @@
+name: DiscoveryServer CI/CD
+
+on:
+  pull_request:
+    branches: Production
+    paths:
+      - "DiscoveryServer/**"
+      - ".github/workflows/DiscoveryServer.yml"
+  workflow_dispatch:
+
+jobs:
+  deploy:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v2
+      - name: Heroku login credentials
+        env:
+          HEROKU_API_KEY: ${{ secrets.HEROKU_API_KEY }}
+          HEROKU_EMAIL: ${{ secrets.HEROKU_EMAIL }}
+        run: |
+          cat > ~/.netrc <<EOF
+            machine api.heroku.com
+              login $HEROKU_EMAIL
+              password $HEROKU_API_KEY
+            machine git.heroku.com
+              login $HEROKU_EMAIL
+              password $HEROKU_API_KEY
+          EOF
+      - name: Add backend remote origin
+        run: heroku git:remote -a ${{ secrets.HEROKU_DISCOVERY_APP_NAME }}
+      - name: Deploy backend to Heroku
+        run: git push heroku `git subtree split --prefix=DiscoveryServer --branch=Develop_Discovery`:refs/heads/master --force

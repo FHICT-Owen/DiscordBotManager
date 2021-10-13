@@ -1,22 +1,19 @@
-const discord = require("discord.js");
-const { Random } = require("something-random-on-discord");
+const discord = require(`discord.js`);
+const { Random } = require(`something-random-on-discord`);
 const random = new Random();
 
 module.exports = {
-  name: "punch",
-  category: "fun",
-  description: "Punch someone",
-  run: async (client, message, args) => {
-    
-    let target = message.mentions.members.first()
-    
-    let data = await random.getAnimeImgURL("punch");
-    
-    let embed = new discord.MessageEmbed()
+  name: `punch`,
+  category: `fun`,
+  description: `Punch someone`,
+  run: async (client, message) => {    
+    const target = message.mentions.members.first();    
+    const data = await random.getAnimeImgURL(`punch`);    
+    const embed = new discord.MessageEmbed()
       .setImage(data)
-      .setColor("RANDOM")
+      .setColor(`RANDOM`)
       .setFooter(`${message.author.username} punches ${target.user.username}`)
-      .setTimestamp()
+      .setTimestamp();
     message.channel.send(embed);
   }
 };

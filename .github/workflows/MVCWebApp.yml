@@ -1,0 +1,32 @@
+name: MVCWebApp CI/CD
+
+on:
+  push:
+    branches: Production
+    paths:
+      - "MVCWebApp/**"
+      - ".github/workflows/MVCWebApp.yml"
+  workflow_dispatch:
+
+jobs:
+  deploy:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v2
+      - name: Heroku login credentials
+        env:
+          HEROKU_API_KEY: ${{ secrets.HEROKU_API_KEY }}
+          HEROKU_EMAIL: ${{ secrets.HEROKU_EMAIL }}
+        run: |
+          cat > ~/.netrc <<EOF
+            machine api.heroku.com
+              login $HEROKU_EMAIL
+              password $HEROKU_API_KEY
+            machine git.heroku.com
+              login $HEROKU_EMAIL
+              password $HEROKU_API_KEY
+          EOF
+      - name: Add backend remote origin
+        run: heroku git:remote -a ${{ secrets.HEROKU_MVCWEBAPP_APP_NAME }}
+      - name: Deploy backend to Heroku
+        run: git push heroku `git subtree split --prefix MVCWebApp Production`:refs/heads/master --force
