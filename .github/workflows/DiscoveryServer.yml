@@ -29,4 +29,4 @@ jobs:
       - name: Add backend remote origin
         run: heroku git:remote -a ${{ secrets.HEROKU_DISCOVERY_APP_NAME }}
       - name: Deploy backend to Heroku
-        run: git push heroku `git subtree split --prefix DiscoveryServer Production`:refs/heads/master --force
+        run: git push heroku `git subtree split --prefix=DiscoveryServer --branch=production`:refs/heads/master --force
