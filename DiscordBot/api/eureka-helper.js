@@ -49,7 +49,7 @@ module.exports = {
             }).catch(() => {
               cn.error(`Eureka`, `Sending heartbeat to Eureka failed.`);
             });
-        }, 5 * 1000))
+        }, 50 * 1000))
       .catch((err) => {
         cn.error(`Eureka`, `Not registered with eureka due to: ${err}`);
       });    
