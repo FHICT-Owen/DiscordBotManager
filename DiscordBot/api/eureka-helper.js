@@ -43,9 +43,11 @@ module.exports = {
             headers: { 'content-type': `application/json` },
             url: `http://localhost:8761/eureka/apps/${appName}/${appName}-${port}`,
           })
-            .then(cn.success(`Eureka`, `Successfully sent heartbeat to Eureka.`))
-            .catch(() =>{            
-              cn.error(`Eureka`, `Sending heartbeat to Eureka failed.`);        
+            .then((msg) => {
+              if(msg.status === 200) 
+                cn.success(`Eureka`, `Successfully sent heartbeat to Eureka.`);                
+            }).catch(() => {
+              cn.error(`Eureka`, `Sending heartbeat to Eureka failed.`);
             });
         }, 50 * 1000))
       .catch((err) => {
