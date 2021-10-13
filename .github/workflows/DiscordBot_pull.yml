@@ -2,7 +2,7 @@ name: DiscordBot CI/CD
 
 on:
   pull_request:
-    branches: Production
+    branches: production
     paths:
       - "DiscordBot/**"
       - ".github/workflows/DiscordBot.yml"

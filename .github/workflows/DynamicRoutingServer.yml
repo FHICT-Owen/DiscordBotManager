@@ -2,7 +2,7 @@ name: DynamicRoutingServer CI/CD
 
 on:
   push:
-    branches: Production
+    branches: production
     paths:
       - "DynamicRoutingServer/**"
       - ".github/workflows/DynamicRoutingServer.yml"
@@ -27,6 +27,6 @@ jobs:
               password $HEROKU_API_KEY
           EOF
       - name: Add backend remote origin
-        run: heroku git:remote -a ${{ secrets.HEROKU_DynamicRoutingServer_APP_NAME }}
+        run: heroku git:remote -a ${{ secrets.HEROKU_DYNAMIC_APP_NAME }}
       - name: Deploy backend to Heroku
         run: git push heroku `git subtree split --prefix DynamicRoutingServer Production`:refs/heads/master --force

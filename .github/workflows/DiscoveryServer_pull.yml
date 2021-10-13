@@ -2,7 +2,7 @@ name: DiscoveryServer CI/CD
 
 on:
   pull_request:
-    branches: Production
+    branches: production
     paths:
       - "DiscoveryServer/**"
       - ".github/workflows/DiscoveryServer.yml"

@@ -2,7 +2,7 @@ name: MVCWebApp CI/CD
 
 on:
   pull_request:
-    branches: Production
+    branches: production
     paths:
       - "MVCWebApp/**"
       - ".github/workflows/MVCWebApp.yml"

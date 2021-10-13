@@ -2,7 +2,7 @@ name: MVCWebApp CI/CD
 
 on:
   push:
-    branches: Production
+    branches: production
     paths:
       - "MVCWebApp/**"
       - ".github/workflows/MVCWebApp.yml"
