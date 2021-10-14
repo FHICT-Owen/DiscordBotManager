@@ -3,7 +3,7 @@
 
 A Spring Boot microservices architecture for managing a Discord bot through a web dashboard. The current idea is that all the different microservices are contained within this monorepo and then seperately deployed to individual containers using CI/CD scripts to keep the codebase standardized and easily visible.
 
-![alt text](https://github.com/FHICT-S-Owen/S3-IPS-DOCS/blob/main/Container%20diagram.jpg?raw=true)
+![alt text](https://github.com/FHICT-S-Owen/S3-IPS-DOCS/blob/main/Container_diagram_v2.jpg?raw=true)
 
 To seperate all these containers while using a monorepo there will be seperate sub folders in this repo that contain the different microservices. These microservices will each have their own development branch branch, furthermore commits will only be pulled through to the production branch once they have been properly tested and deployed at least once.
 
