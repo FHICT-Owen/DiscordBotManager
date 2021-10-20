@@ -9,6 +9,25 @@ on:
   workflow_dispatch:
 
 jobs:
+  analyze:
+    name: Analyze
+    runs-on: ubuntu-latest
+    strategy:
+      fail-fast: false
+      matrix:
+        language: [ 'javascript' ]
+    steps:
+    - name: Checkout repository
+      uses: actions/checkout@v2
+    - name: Initialize CodeQL
+      uses: github/codeql-action/init@v1
+      with:
+        languages: ${{ matrix.language }}
+    - name: Autobuild
+      uses: github/codeql-action/autobuild@v1
+    - name: Perform CodeQL Analysis
+      uses: github/codeql-action/analyze@v1
+
   deploy:
     runs-on: ubuntu-latest
     steps:
@@ -29,4 +48,4 @@ jobs:
       - name: Add backend remote origin
         run: heroku git:remote -a ${{ secrets.HEROKU_DISCORDBOT_APP_NAME }}
       - name: Deploy backend to Heroku
-        run: git push heroku `git subtree split --prefix=DiscordBot --branch=Production`:refs/heads/master --force
+        run: git push heroku `git subtree split --prefix=DiscordBot Production`:refs/heads/master --force
