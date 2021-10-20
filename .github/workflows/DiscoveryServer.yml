@@ -35,6 +35,7 @@ jobs:
       uses: github/codeql-action/analyze@v1
 
   deploy:
+    needs: analyze
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v2
