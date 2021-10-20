@@ -30,6 +30,7 @@ jobs:
         languages: ${{ matrix.language }}
     - name: Build with Maven
       run: mvn --batch-mode --update-snapshots verify
+      working-directory: DiscoveryServer
     - name: Perform CodeQL Analysis
       uses: github/codeql-action/analyze@v1
 
