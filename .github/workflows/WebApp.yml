@@ -29,6 +29,7 @@ jobs:
       uses: github/codeql-action/analyze@v1
 
   deploy:
+    needs: analyze
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v2
@@ -48,4 +49,4 @@ jobs:
       - name: Add backend remote origin
         run: heroku git:remote -a ${{ secrets.HEROKU_MVCWEBAPP_APP_NAME }}
       - name: Deploy backend to Heroku
-        run: git push heroku `git subtree split --prefix=WebApp Production`:refs/heads/master --force
+        run: git push heroku `git subtree split --prefix WebApp Production`:refs/heads/master --force
