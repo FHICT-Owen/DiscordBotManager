@@ -20,7 +20,10 @@ jobs:
     - name: Checkout repository
       uses: actions/checkout@v2
     - name: Run subtree-split
+      id: split
       run: git subtree split --prefix=DiscoveryServer Production
+    - name: print output
+      run: echo ${{ steps.split.outputs.data }}
     - name: Initialize CodeQL
       uses: github/codeql-action/init@v1
       with:
