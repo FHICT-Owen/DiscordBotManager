@@ -1,11 +1,11 @@
-name: MVCWebApp CI/CD
+name: WebApp CI/CD
 
 on:
-  push:
+  pull_request:
     branches: Production
     paths:
-      - "MVCWebApp/**"
-      - ".github/workflows/MVCWebApp.yml"
+      - "WebApp/**"
+      - ".github/workflows/WebApp.yml"
   workflow_dispatch:
 
 jobs:
@@ -17,6 +17,7 @@ jobs:
         env:
           HEROKU_API_KEY: ${{ secrets.HEROKU_API_KEY }}
           HEROKU_EMAIL: ${{ secrets.HEROKU_EMAIL }}
+          HEROKU_APP_NAME: ${{ secrets.HEROKU_WEBAPP_APP_NAME }}
         run: |
           cat > ~/.netrc <<EOF
             machine api.heroku.com
@@ -27,6 +28,6 @@ jobs:
               password $HEROKU_API_KEY
           EOF
       - name: Add backend remote origin
-        run: heroku git:remote -a ${{ secrets.HEROKU_MVCWEBAPP_APP_NAME }}
+        run: heroku git:remote -a $HEROKU_APP_NAME
       - name: Deploy backend to Heroku
-        run: git push heroku `git subtree split --prefix=MVCWebApp --branch=Production`:refs/heads/master --force
+        run: git push heroku `git subtree split --prefix=WebApp --branch=Develop_DiscordWeb`:refs/heads/master --force
