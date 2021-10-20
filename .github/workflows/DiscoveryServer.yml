@@ -25,8 +25,6 @@ jobs:
         languages: ${{ matrix.language }}
     - name: Apache Maven Build Automation for Java Project
       uses: NishkarshRaj/Maven_Actions@0.1
-      with: 
-        src: DiscoveryServer/src/main/java/com.owendb.discoveryserver
     - name: Perform CodeQL Analysis
       uses: github/codeql-action/analyze@v1
 
