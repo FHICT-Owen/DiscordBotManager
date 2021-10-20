@@ -19,17 +19,14 @@ jobs:
     steps:
     - name: Checkout repository
       uses: actions/checkout@v2
-    - name: Run subtree-split
-      id: split
-      run: echo "::set-output name=data::$(git subtree split --prefix=DiscoveryServer Production)"
-    - name: print output
-      run: echo ${{ steps.split.outputs.data }}
     - name: Initialize CodeQL
       uses: github/codeql-action/init@v1
       with:
         languages: ${{ matrix.language }}
-    - name: Autobuild
-      uses: github/codeql-action/autobuild@v1
+    - name: Apache Maven Build Automation for Java Project
+      uses: NishkarshRaj/Maven_Actions@0.1
+      with: 
+        src: DiscoveryServer/src/main/java/com.owendb.discoveryserver
     - name: Perform CodeQL Analysis
       uses: github/codeql-action/analyze@v1
 
