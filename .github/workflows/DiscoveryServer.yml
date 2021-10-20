@@ -19,12 +19,17 @@ jobs:
     steps:
     - name: Checkout repository
       uses: actions/checkout@v2
+    - name: Set up JDK 11
+      uses: actions/setup-java@v2
+      with:
+        java-version: '11'
+        distribution: 'adopt' 
     - name: Initialize CodeQL
       uses: github/codeql-action/init@v1
       with:
         languages: ${{ matrix.language }}
-    - name: Apache Maven Build Automation for Java Project
-      uses: NishkarshRaj/Maven_Actions@0.1
+    - name: Build with Maven
+      run: mvn --batch-mode --update-snapshots verify
     - name: Perform CodeQL Analysis
       uses: github/codeql-action/analyze@v1
 
