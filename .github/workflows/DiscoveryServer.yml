@@ -17,10 +17,10 @@ jobs:
       matrix:
         language: [ 'java' ]
     steps:
-    - name: Run subtree-split
-      run: git subtree split --prefix=DiscoveryServer Production
     - name: Checkout repository
       uses: actions/checkout@v2
+    - name: Run subtree-split
+      run: git subtree split --prefix=DiscoveryServer Production
     - name: Initialize CodeQL
       uses: github/codeql-action/init@v1
       with:
