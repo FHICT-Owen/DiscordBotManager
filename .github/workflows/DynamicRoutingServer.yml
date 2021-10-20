@@ -48,4 +48,4 @@ jobs:
       - name: Add backend remote origin
         run: heroku git:remote -a ${{ secrets.HEROKU_DYNAMIC_APP_NAME }}
       - name: Deploy backend to Heroku
-        run: git push heroku `git subtree split --prefix=DynamicRoutingServer --branch=Production`:refs/heads/master --force
+        run: git push heroku `git subtree split --prefix=DynamicRoutingServer Production`:refs/heads/master --force
