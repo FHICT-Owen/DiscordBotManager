@@ -1,8 +1,8 @@
 package com.owendb.loggingservice.actionLog;
 
 import javax.persistence.*;
-import java.sql.Date;
-import java.sql.Time;
+import java.time.LocalDate;
+import java.time.LocalTime;
 
 @Entity
 @Table
@@ -19,8 +19,8 @@ public class ActionLog {
     )
     private Integer id;
     private Long userId;
-    private Time time;
-    private Date date;
+    private LocalTime time;
+    private LocalDate date;
     private String category;
     private String action;
 
@@ -28,8 +28,7 @@ public class ActionLog {
 
     }
 
-    public ActionLog(Integer id, Long userId, Time time, Date date, String category, String action) {
-        this.id = id;
+    public ActionLog(Long userId, LocalTime time, LocalDate date, String category, String action) {
         this.userId = userId;
         this.time = time;
         this.date = date;
@@ -37,13 +36,7 @@ public class ActionLog {
         this.action = action;
     }
 
-    public Integer getId() {
-        return id;
-    }
-
-    public void setId(Integer id) {
-        this.id = id;
-    }
+    public Integer getId() { return id; }
 
     public Long getUserId() {
         return userId;
@@ -53,19 +46,19 @@ public class ActionLog {
         this.userId = userId;
     }
 
-    public Time getTime() {
+    public LocalTime getTime() {
         return time;
     }
 
-    public void setTime(Time time) {
+    public void setTime(LocalTime time) {
         this.time = time;
     }
 
-    public Date getDate() {
+    public LocalDate getDate() {
         return date;
     }
 
-    public void setDate(Date date) {
+    public void setDate(LocalDate date) {
         this.date = date;
     }
 

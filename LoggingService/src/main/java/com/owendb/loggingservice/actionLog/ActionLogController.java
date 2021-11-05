@@ -1,6 +1,9 @@
 package com.owendb.loggingservice.actionLog;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.HttpStatus;
+import org.springframework.http.ResponseEntity;
+import org.springframework.validation.annotation.Validated;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
@@ -26,9 +29,10 @@ public class ActionLogController {
         return actionService.getLogsByUserId(userId);
     }
 
-    @PostMapping
-    public void createActionLog(@RequestBody ActionLog actionLog) {
+    @PostMapping("/log")
+    public ResponseEntity<ActionLog> addActionLog(@RequestBody ActionLog actionLog) {
         actionService.createLog(actionLog);
+        return new ResponseEntity<>(actionLog, HttpStatus.CREATED);
     }
 
     @DeleteMapping("/log/{logId}")
