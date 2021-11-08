@@ -51,8 +51,8 @@ public class LogRestControllerIntegrationTest {
         System.out.println(asJsonString(test));
         mvc.perform(post("/api/log").contentType(MediaType.APPLICATION_JSON).content(asJsonString(test))).andExpect(status().isCreated());
 
-        List<ActionLog> found = repository.findAll();
-        Assert.assertTrue(found.stream().anyMatch(o -> o.getUserId().equals(190833902020067329L)));
+        List<ActionLog> list = repository.findAll();
+        Assert.assertTrue(list.stream().anyMatch(o -> o.getUserId().equals(190833902020067329L)));
     }
 
     public static String asJsonString(final Object obj) {
