@@ -29,6 +29,10 @@ jobs:
       uses: github/codeql-action/analyze@v1
     - name: SonarCloud Scan
       uses: SonarSource/sonarcloud-github-action@master
+      with:
+        args: >
+          -Dsonar.organization=fhict-s-owen
+          -Dsonar.projectKey=DiscordBotManager_Bot
       env:
         GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}  # Needed to get PR information, if any
         SONAR_TOKEN: ${{ secrets.SONAR_TOKEN_BOT }}
