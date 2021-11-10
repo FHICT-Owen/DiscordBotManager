@@ -27,9 +27,20 @@ jobs:
       uses: github/codeql-action/autobuild@v1
     - name: Perform CodeQL Analysis
       uses: github/codeql-action/analyze@v1
+    - name: SonarCloud Scan
+      uses: SonarSource/sonarcloud-github-action@master
+      with:
+        args: >
+          -Dsonar.organization=fhict-s-owen
+          -Dsonar.projectKey=DiscordBotManager_Bot
+          -Dsonar.sources=DiscordBot/
+      env:
+        GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}  # Needed to get PR information, if any
+        SONAR_TOKEN: ${{ secrets.SONAR_TOKEN_BOT }}
 
   deploy:
-    needs: analyze
+    needs: sonarcloud
+    name: Deploy
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v2
