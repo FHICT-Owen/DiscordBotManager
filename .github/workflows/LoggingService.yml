@@ -1,4 +1,4 @@
-name: DynamicRoutingServer CI/CD
+name: LoggingService CI/CD
 
 on:
   push:
