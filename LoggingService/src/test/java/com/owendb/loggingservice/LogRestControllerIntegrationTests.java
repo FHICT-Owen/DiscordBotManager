@@ -46,7 +46,6 @@ public class LogRestControllerIntegrationTests {
     @Test
     public void whenValidInput_thenCreateActionLog() throws Exception {
         ActionLog test = new ActionLog(190833902020067329L, LocalTime.now() , LocalDate.now(),"userManagement", "Banned user");
-        System.out.println(asJsonString(test));
         mvc.perform(post("/api/log").contentType(MediaType.APPLICATION_JSON).content(asJsonString(test))).andExpect(status().isCreated());
 
         List<ActionLog> list = repository.findAll();
