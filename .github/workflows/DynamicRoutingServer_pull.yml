@@ -5,7 +5,7 @@ on:
     branches: Production
     paths:
       - "DynamicRoutingServer/**"
-      - ".github/workflows/DynamicRoutingServer.yml"
+      - ".github/workflows/DynamicRoutingServer_pull.yml"
   workflow_dispatch:
 
 jobs:

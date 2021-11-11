@@ -5,7 +5,7 @@ on:
     branches: Production
     paths:
       - "DiscoveryServer/**"
-      - ".github/workflows/DiscoveryServer.yml"
+      - ".github/workflows/DiscoveryServer_pull.yml"
   workflow_dispatch:
 
 jobs:

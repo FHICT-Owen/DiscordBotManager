@@ -5,7 +5,7 @@ on:
     branches: Production
     paths:
       - "WebApp/**"
-      - ".github/workflows/WebApp.yml"
+      - ".github/workflows/WebApp_pull.yml"
   workflow_dispatch:
 
 jobs:
