@@ -5,6 +5,7 @@ on:
     branches: Production
     paths:
       - "DiscordBot/**"
+      - ".github/workflows/DiscordBot.yml"
   workflow_dispatch:
 
 jobs:
