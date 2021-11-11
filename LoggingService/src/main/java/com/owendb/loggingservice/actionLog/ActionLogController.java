@@ -10,7 +10,7 @@ import java.util.List;
 
 @CrossOrigin
 @RestController
-@RequestMapping("api/")
+@RequestMapping("api/log")
 public class ActionLogController {
     private final ActionService actionService;
 
@@ -18,6 +18,9 @@ public class ActionLogController {
     public ActionLogController(ActionService actionService) {
         this.actionService = actionService;
     }
+
+    @GetMapping
+    public List<ActionLog> getLogs() { return actionService.getLogs(); }
 
     @GetMapping("/category/{categoryName}")
     public List<ActionLog> getLogsByCategory(@PathVariable("categoryName") String categoryName) {
@@ -29,13 +32,13 @@ public class ActionLogController {
         return actionService.getLogsByUserId(userId);
     }
 
-    @PostMapping("/log")
+    @PostMapping
     public ResponseEntity<ActionLog> addActionLog(@RequestBody ActionLog actionLog) {
         actionService.createLog(actionLog);
         return new ResponseEntity<>(actionLog, HttpStatus.CREATED);
     }
 
-    @DeleteMapping("/log/{logId}")
+    @DeleteMapping("/{logId}")
     public void deleteActionLog(@PathVariable("logId") Integer logId) {
         actionService.deleteLog(logId);
     }

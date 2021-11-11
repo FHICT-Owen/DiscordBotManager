@@ -18,8 +18,6 @@ import org.springframework.http.MediaType;
 import org.springframework.test.context.TestPropertySource;
 import org.springframework.test.context.junit4.SpringRunner;
 import org.springframework.test.web.servlet.MockMvc;
-import org.springframework.test.web.servlet.setup.MockMvcBuilders;
-import org.springframework.web.context.WebApplicationContext;
 
 import java.time.LocalDate;
 import java.time.LocalTime;
@@ -34,7 +32,7 @@ import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.
 @TestPropertySource(locations = "classpath:application-integrationtest.properties")
 @EnableAutoConfiguration
 @ComponentScan(basePackages = "com.owendb.loggingservice.actionLog")
-public class LogRestControllerIntegrationTest {
+public class LogRestControllerIntegrationTests {
 
     @Autowired
     private MockMvc mvc;
