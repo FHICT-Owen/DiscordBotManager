@@ -1,0 +1,42 @@
+{
+  "name": "replicator",
+  "version": "0.1.0",
+  "private": true,
+  "scripts": {
+    "postinstall": "yarn run build",
+    "start": "node server.js",
+    "serve": "vue-cli-service serve --port 3000",
+    "build": "vue-cli-service build"
+  },
+  "dependencies": {
+    "@auth0/auth0-spa-js": "^1.13.6",
+    "@fortawesome/fontawesome-svg-core": "^1.2.32",
+    "@fortawesome/free-solid-svg-icons": "^5.15.1",
+    "@fortawesome/vue-fontawesome": "3.0.0-3",
+    "@quasar/extras": "^1.0.0",
+    "axios": "^0.21.2",
+    "core-js": "^3.6.5",
+    "element-plus": "^1.0.2-beta.28",
+    "express": "^4.17.1",
+    "quasar": "^2.0.0",
+    "serve-static": "^1.14.1",
+    "vue": "^3.0.0",
+    "vue-router": "^4.0.0-0",
+    "vuex": "^4.0.0-0"
+  },
+  "devDependencies": {
+    "@vue/cli-plugin-babel": "~4.5.0",
+    "@vue/cli-plugin-router": "~4.5.0",
+    "@vue/cli-plugin-typescript": "~4.5.0",
+    "@vue/cli-plugin-vuex": "~4.5.0",
+    "@vue/cli-service": "~4.5.0",
+    "@vue/compiler-sfc": "^3.0.0",
+    "sass": "1.32.12",
+    "sass-loader": "^10.1.0",
+    "stylus": "^0.54.7",
+    "stylus-loader": "^3.0.2",
+    "typescript": "~3.9.3",
+    "vue-cli-plugin-element-plus": "~0.0.13",
+    "vue-cli-plugin-quasar": "~4.0.2"
+  }
+}

@@ -1,24 +1,24 @@
-const yes = ['yes', 'y', 'ye', 'yea', 'correct'];
-const no = ['no', 'n', 'nah', 'nope', 'fuck off'];
-const MONEY = ['', 'k', 'M', 'G', 'T', 'P', 'E'];
+const yes = [`yes`, `y`, `ye`, `yea`, `correct`];
+const no = [`no`, `n`, `nah`, `nope`, `fuck off`];
+const MONEY = [``, `k`, `M`, `G`, `T`, `P`, `E`];
 const inviteRegex = /(https?:\/\/)?(www\.|canary\.|ptb\.)?discord(\.gg|(app)?\.com\/invite|\.me)\/([^ ]+)\/?/gi;
 const botInvRegex = /(https?:\/\/)?(www\.|canary\.|ptb\.)?discord(app)\.com\/(api\/)?oauth2\/authorize\?([^ ]+)\/?/gi;
 
 module.exports = {
-  getMember(message, toFind = '') {
+  getMember(message, toFind = ``) {
     toFind = toFind.toLowerCase();
 
-    var target = message.guild.members.cache.get(toFind);
+    let target = message.guild.members.cache.get(toFind);
 
     if (!target && message.mentions.members)
       target = message.mentions.members.first();
 
-    if (!target && toFind) {
+    if (!target && toFind) 
       target = message.guild.members.cache.find(member => {
         return member.displayName.toLowerCase().includes(toFind) ||
-          member.user.tag.toLowerCase().includes(toFind)
+          member.user.tag.toLowerCase().includes(toFind);
       });
-    }
+    
 
     if (!target)
       target = message.member;
@@ -31,7 +31,7 @@ module.exports = {
   },
 
   formatDate: function (date) {
-    return new Intl.DateTimeFormat('en-US').format(date);
+    return new Intl.DateTimeFormat(`en-US`).format(date);
   },
 
   promptMessage: async function (message, author, time, validReactions) {
@@ -90,17 +90,17 @@ module.exports = {
 
   chunk: function (array, chunkSize) {
     const temp = [];
-    for (let i = 0; i < array.length; i += chunkSize) {
+    for (let i = 0; i < array.length; i += chunkSize) 
       temp.push(array.slice(i, i + chunkSize));
-    }
+    
     return temp;
   },
 
   getWrapText: function (text, length) {
     const temp = [];
-    for (let i = 0; i < text.length; i += length) {
+    for (let i = 0; i < text.length; i += length) 
       temp.push(text.slice(i, i + length));
-    }
+    
     return temp.map(x => x.trim());
   },
 
@@ -120,55 +120,55 @@ module.exports = {
     });
   },
 
-  list: function (arr, conj = 'and') {
+  list: function (arr, conj = `and`) {
     const len = arr.length;
-    if (len === 0) return '';
+    if (len === 0) return ``;
     if (len === 1) return arr[0];
-    return `${arr.slice(0, -1).join(', ')}${len > 1 ? `${len > 2 ? ',' : ''} ${conj} ` : ''}${arr.slice(-1)}`;
+    return `${arr.slice(0, -1).join(`, `)}${len > 1 ? `${len > 2 ? `,` : ``} ${conj} ` : ``}${arr.slice(-1)}`;
   },
 
-  firstUpperCase(text, split = ' ') {
-    return text.split(split).map(word => `${word.charAt(0).toUpperCase()}${word.slice(1)}`).join(' ');
+  firstUpperCase(text, split = ` `) {
+    return text.split(split).map(word => `${word.charAt(0).toUpperCase()}${word.slice(1)}`).join(` `);
   },
 
   shorten(text, maxLen = 2000) {
     return text.length > maxLen ? `${text.substr(0, maxLen - 3)}...` : text;
   },
 
-  stripInvites(str, { guild = true, bot = true, text = '[redacted invite]' } = {}) {
+  stripInvites(str, { guild = true, bot = true, text = `[redacted invite]` } = {}) {
     if (guild) str = str.replace(inviteRegex, text);
     if (bot) str = str.replace(botInvRegex, text);
     return str;
   },
   
   wrapText (ctx, text, maxWidth) {
-		return new Promise(resolve => {
-			if (ctx.measureText(text).width < maxWidth) return resolve([text]);
-			if (ctx.measureText('W').width > maxWidth) return resolve(null);
-			const words = text.split(' ');
-			const lines = [];
-			let line = '';
-			while (words.length > 0) {
-				let split = false;
-				while (ctx.measureText(words[0]).width >= maxWidth) {
-					const temp = words[0];
-					words[0] = temp.slice(0, -1);
-					if (split) {
-						words[1] = `${temp.slice(-1)}${words[1]}`;
-					} else {
-						split = true;
-						words.splice(1, 0, temp.slice(-1));
-					}
-				}
-				if (ctx.measureText(`${line}${words[0]}`).width < maxWidth) {
-					line += `${words.shift()} `;
-				} else {
-					lines.push(line.trim());
-					line = '';
-				}
-				if (words.length === 0) lines.push(line.trim());
-			}
-			return resolve(lines);
-		});
-	}
-}
+    return new Promise(resolve => {
+      if (ctx.measureText(text).width < maxWidth) return resolve([text]);
+      if (ctx.measureText(`W`).width > maxWidth) return resolve(null);
+      const words = text.split(` `);
+      const lines = [];
+      let line = ``;
+      while (words.length > 0) {
+        let split = false;
+        while (ctx.measureText(words[0]).width >= maxWidth) {
+          const temp = words[0];
+          words[0] = temp.slice(0, -1);
+          if (split) 
+            words[1] = `${temp.slice(-1)}${words[1]}`;
+          else {
+            split = true;
+            words.splice(1, 0, temp.slice(-1));
+          }
+        }
+        if (ctx.measureText(`${line}${words[0]}`).width < maxWidth) 
+          line += `${words.shift()} `;
+        else {
+          lines.push(line.trim());
+          line = ``;
+        }
+        if (words.length === 0) lines.push(line.trim());
+      }
+      return resolve(lines);
+    });
+  }
+};
