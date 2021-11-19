@@ -19,4 +19,4 @@ Under construction
 
 ## Research
 
-All of the applicable research for this project has been added to a seperate markdown file called "Research.md" to keep this README as concise as possible. If you'd like to learn more about the research that has been conducted within this project check out the abovementioned file.
+All of the applicable research for this project has been added to a seperate markdown file called "[Research.md](https://github.com/FHICT-S-Owen/DiscordBotManager/blob/0de4bc022132e855571706d579f74db0707ad5e2/Research.md)" to keep this README as concise as possible. If you'd like to learn more about the research that has been conducted within this project check out the abovementioned file.

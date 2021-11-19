@@ -1,5 +1,4 @@
 # Research
-
 Before creating the project I'll have to do research on the implications of using a monorepo vs a polyrepo and how I can possibly make my application more secure when getting an SSL certificate is out of the question to be able to use HTTPS. Furthermore I would like to look into the implications of automating my testing using GitHub Actions.
 
 ## Main research question
