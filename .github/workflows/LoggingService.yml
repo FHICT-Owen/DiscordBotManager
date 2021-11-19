@@ -1,10 +1,10 @@
-name: DiscoveryServer CI/CD
+name: LoggingService CI/CD
 
 on:
-  pull_request:
+  push:
     branches: Production
     paths:
-      - "DiscoveryServer/**"
+      - "LoggingService/**"
   workflow_dispatch:
 
 jobs:
@@ -23,18 +23,33 @@ jobs:
       with:
         java-version: '11'
         distribution: 'adopt' 
+    - name: Cache SonarCloud packages
+      uses: actions/cache@v1
+      with:
+        path: ~/.sonar/cache
+        key: ${{ runner.os }}-sonar
+        restore-keys: ${{ runner.os }}-sonar
+    - name: Cache Maven packages
+      uses: actions/cache@v1
+      with:
+        path: ~/.m2
+        key: ${{ runner.os }}-m2-${{ hashFiles('**/pom.xml') }}
+        restore-keys: ${{ runner.os }}-m2
+    - name: Build and analyze
+      env:
+        GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        SONAR_TOKEN: ${{ secrets.SONAR_TOKEN_WEBAPP }}
+      run: mvn --batch-mode --update-snapshots verify org.sonarsource.scanner.maven:sonar-maven-plugin:sonar -Dsonar.projectKey=DiscordBotManager_Logging
     - name: Initialize CodeQL
       uses: github/codeql-action/init@v1
       with:
         languages: ${{ matrix.language }}
-    - name: Build with Maven
-      run: mvn --batch-mode --update-snapshots verify
-      working-directory: DiscoveryServer
+      working-directory: ./DynamicRoutingServer
     - name: Perform CodeQL Analysis
       uses: github/codeql-action/analyze@v1
-      
+
   deploy:
-    needs: analyze
+    needs: analyze  
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v2
@@ -52,6 +67,6 @@ jobs:
               password $HEROKU_API_KEY
           EOF
       - name: Add backend remote origin
-        run: heroku git:remote -a ${{ secrets.HEROKU_DISCOVERY_APP_NAME }}
+        run: heroku git:remote -a ${{ secrets.HEROKU_DYNAMIC_APP_NAME }}
       - name: Deploy backend to Heroku
-        run: git push heroku `git subtree split --prefix=DiscoveryServer --branch=Develop_Discovery`:refs/heads/master --force
+        run: git push heroku `git subtree split --prefix=DynamicRoutingServer Production`:refs/heads/master --force
