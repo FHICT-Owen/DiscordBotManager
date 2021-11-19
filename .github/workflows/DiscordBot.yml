@@ -5,7 +5,6 @@ on:
     branches: Production
     paths:
       - "DiscordBot/**"
-      - ".github/workflows/DiscordBot.yml"
   workflow_dispatch:
 
 jobs:
@@ -27,9 +26,10 @@ jobs:
       uses: github/codeql-action/autobuild@v1
     - name: Perform CodeQL Analysis
       uses: github/codeql-action/analyze@v1
-
+      
   deploy:
     needs: analyze
+    name: Deploy
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v2
