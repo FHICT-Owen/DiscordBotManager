@@ -9,12 +9,24 @@ To seperate all these containers while using a monorepo there will be seperate s
 
 ## Disclaimer
 
-This repository will make use of Spring Boot to create the different microservices. As setting up HTTPS in Java Spring Boot requires getting an SSL certificate we'll make use of HTTP instead. This means the api calls between services are less secure.
+Currently this project is still being worked on. This means that the setup guide will most likely change in the future as the project progresses. As an example, the current GitHub actions are set up to deploy to heroku, but for microservices you'd much rather deploy to a dedicated platform like google cloud services or a docker swarm. Furthermore, not all .env variables are injected on deploy as of yet. In Heroku you can further define any needed .env variables or config lines.
 
 ## Getting Started
+If you'd like to make use of this project for your own Discord bot please follow the folowing steps:
+
+1. Fork this repo using your preferred method
+2. Make sure that you use the same branch names or change the _pull workflows to work with your branch names
+3. Set up all of the secrets that the workflows require
+4. Add environment variables that the microservices can use
+5. Add a config.json for the Discord bot or add your own Discord bot to this system by forking the eureka-helper.js file to send a heartbeat to Eureka
+6. If you add your own bot, set up your API calls and API endpoints within the Discord bot
+7. Go to the Github Actions page of your own Repo and trigger workflows manually to start testing and deploying them if they haven't triggered automatically by doing commits
+
+You can also test run all of the applications by using an IDE for the Java microservices and the folowing commands to run the Discord bot:
 
 ```console
-Under construction
+$ npm i --save
+$ node index.js [portnumber for the receiving API]
 ```
 
 ## Research
