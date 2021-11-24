@@ -29,8 +29,8 @@ If you'd like to make use of this project for your own Discord bot please follow
 You can also test run all of the applications by using an IDE for the Java microservices and the folowing commands to run the Discord bot:
 
 ```console
-$ npm i --save
-$ node index.js [portnumber for the receiving API]
+npm i --save
+node index.js [portnumber for the receiving API]
 ```
 
 ## Research
