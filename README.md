@@ -7,7 +7,7 @@ A Spring Boot microservices architecture for managing a Discord bot through a we
 
 To seperate all these containers while using a monorepo there will be seperate subfolders in this repository that contain the different microservices. These microservices will each have their own development branch branch, furthermore commits will only be pulled through to the production branch once they have been properly tested and deployed at least once.
 
-## Tracking progress
+## Tracking progress & Contributing
 
 This GitHub repo makes use of GitHub issues and GitHub projects to keep track of the current progress. If there are any new features that you would like to implement create a pull request with a dedicated issue to quickly summarize what you changed. If you have a new idea that might change some of the core aspects of this project you can also create an issue for it.
 
