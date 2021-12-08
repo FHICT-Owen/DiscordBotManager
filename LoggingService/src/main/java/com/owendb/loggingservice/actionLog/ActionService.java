@@ -45,4 +45,8 @@ public class ActionService {
         List<ActionLog> logs = actionLogRepository.findActionsByUserId(userId);
         return logs;
     }
+
+    public List<ActionLog> getLogs() {
+        return actionLogRepository.findAll();
+    }
 }

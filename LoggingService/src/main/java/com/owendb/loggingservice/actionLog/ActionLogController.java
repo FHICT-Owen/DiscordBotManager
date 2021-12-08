@@ -1,13 +1,16 @@
 package com.owendb.loggingservice.actionLog;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.HttpStatus;
+import org.springframework.http.ResponseEntity;
+import org.springframework.validation.annotation.Validated;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 
 @CrossOrigin
 @RestController
-@RequestMapping("api/")
+@RequestMapping("api/log")
 public class ActionLogController {
     private final ActionService actionService;
 
@@ -15,6 +18,9 @@ public class ActionLogController {
     public ActionLogController(ActionService actionService) {
         this.actionService = actionService;
     }
+
+    @GetMapping
+    public List<ActionLog> getLogs() { return actionService.getLogs(); }
 
     @GetMapping("/category/{categoryName}")
     public List<ActionLog> getLogsByCategory(@PathVariable("categoryName") String categoryName) {
@@ -27,11 +33,12 @@ public class ActionLogController {
     }
 
     @PostMapping
-    public void createActionLog(@RequestBody ActionLog actionLog) {
+    public ResponseEntity<ActionLog> addActionLog(@RequestBody ActionLog actionLog) {
         actionService.createLog(actionLog);
+        return new ResponseEntity<>(actionLog, HttpStatus.CREATED);
     }
 
-    @DeleteMapping("/log/{logId}")
+    @DeleteMapping("/{logId}")
     public void deleteActionLog(@PathVariable("logId") Integer logId) {
         actionService.deleteLog(logId);
     }
