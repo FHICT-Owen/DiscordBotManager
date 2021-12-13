@@ -1,50 +1,22 @@
 package com.owendb.loggingservice.actionLog;
 
-import javax.persistence.*;
 import java.time.LocalDate;
 import java.time.LocalTime;
 
-@Entity
-@Table
-public class ActionLog {
-    @Id
-    @SequenceGenerator(
-            name = "actionLog_sequence",
-            sequenceName = "actionLog_sequence",
-            allocationSize = 1
-    )
-    @GeneratedValue(
-            strategy = GenerationType.SEQUENCE,
-            generator = "actionLog_sequence"
-    )
-    private Integer id;
+public class ActionLogDto {
     private Long userId;
     private LocalTime time;
     private LocalDate date;
     private String category;
     private String action;
 
-    public ActionLog() {
-
-    }
-
-    public ActionLog(Long userId, LocalTime time, LocalDate date, String category, String action) {
+    public ActionLogDto(Long userId, LocalTime time, LocalDate date, String category, String action) {
         this.userId = userId;
         this.time = time;
         this.date = date;
         this.category = category;
         this.action = action;
     }
-
-    public ActionLog(ActionLogDto actionLog) {
-        this.userId = actionLog.getUserId();
-        this.time = actionLog.getTime();
-        this.date = actionLog.getDate();
-        this.category = actionLog.getCategory();
-        this.action = actionLog.getAction();
-    }
-
-    public Integer getId() { return id; }
 
     public Long getUserId() {
         return userId;
@@ -85,4 +57,5 @@ public class ActionLog {
     public void setAction(String action) {
         this.action = action;
     }
+
 }
