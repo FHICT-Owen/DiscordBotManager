@@ -33,9 +33,10 @@ public class ActionLogController {
     }
 
     @PostMapping
-    public ResponseEntity<ActionLog> addActionLog(@RequestBody ActionLog actionLog) {
-        actionService.createLog(actionLog);
-        return new ResponseEntity<>(actionLog, HttpStatus.CREATED);
+    public ResponseEntity<ActionLog> addActionLog(@RequestBody ActionLogDto actionLog) {
+        ActionLog persistentLog = new ActionLog (actionLog);
+        actionService.createLog(persistentLog);
+        return new ResponseEntity<>(persistentLog, HttpStatus.CREATED);
     }
 
     @DeleteMapping("/{logId}")

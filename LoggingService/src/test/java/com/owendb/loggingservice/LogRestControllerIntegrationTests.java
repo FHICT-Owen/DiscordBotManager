@@ -27,11 +27,9 @@ import static org.springframework.test.web.servlet.request.MockMvcRequestBuilder
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.status;
 
 @RunWith(SpringRunner.class)
-@SpringBootTest(webEnvironment = SpringBootTest.WebEnvironment.MOCK, classes = ActionLog.class)
+@SpringBootTest
 @AutoConfigureMockMvc(addFilters = false)
 @TestPropertySource(locations = "classpath:application-integrationtest.properties")
-@EnableAutoConfiguration
-@ComponentScan(basePackages = "com.owendb.loggingservice.actionLog")
 public class LogRestControllerIntegrationTests {
 
     @Autowired
