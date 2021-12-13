@@ -44,7 +44,6 @@ jobs:
       uses: github/codeql-action/init@v1
       with:
         languages: ${{ matrix.language }}
-      working-directory: ./DynamicRoutingServer
     - name: Perform CodeQL Analysis
       uses: github/codeql-action/analyze@v1
 
