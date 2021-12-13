@@ -36,6 +36,14 @@ public class ActionLog {
         this.action = action;
     }
 
+    public ActionLog(ActionLog actionLog) {
+        this.userId = actionLog.userId;
+        this.time = actionLog.time;
+        this.date = actionLog.date;
+        this.category = actionLog.category;
+        this.action = actionLog.action;
+    }
+
     public Integer getId() { return id; }
 
     public Long getUserId() {

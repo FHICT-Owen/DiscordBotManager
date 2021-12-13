@@ -34,7 +34,8 @@ public class ActionLogController {
 
     @PostMapping
     public ResponseEntity<ActionLog> addActionLog(@RequestBody ActionLog actionLog) {
-        actionService.createLog(actionLog);
+        ActionLog checkLog = new ActionLog (actionLog);
+        actionService.createLog(checkLog);
         return new ResponseEntity<>(actionLog, HttpStatus.CREATED);
     }
 
