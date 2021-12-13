@@ -3,7 +3,7 @@
 
 This project contains multiple microservices and a Discord bot to view user activities from a web dashboard. The current project has all the different microservices contained within this monorepo, which can then be individually deployed to a hosting platform using CI/CD.
 
-![alt text](https://github.com/FHICT-S-Owen/S3-IPS-DOCS/blob/main/Container_diagram_v2.jpg?raw=true)
+![Container diagram](https://github.com/FHICT-S-Owen/S3-IPS-DOCS/blob/main/Container_diagram_v2.jpg?raw=true)
 
 To seperate all these containers while using a monorepo there will be seperate subfolders in this repository that contain the different microservices. These microservices will each have their own development branch branch, furthermore commits will only be pulled through to the production branch once they have been properly tested and deployed at least once.
 
