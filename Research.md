@@ -26,13 +26,13 @@ To understand our sub-question we have to address a few terms that are mentioned
 
 First of, we have to understand what kind of architecture we will be using. The [distributed architecture](https://www.tutorialspoint.com/software_architecture_design/distributed_architecture.htm) that is used for this project is called a [microservices architecture](https://microservices.io/). 
 
-Microservices or otherwise known as a microservices architecture is a variant of the service-oriented architecture that arranges an application as a collection of loosely-coupled services. The goal of microservices is to bring services online that are independently deployable. Each microservice runs a unique process and communicates through a well-defined, lightweight mechanism, such as a container, to serve a business goal.<sup>[1](###Sources)</sup>
+Microservices or otherwise known as a microservices architecture is a variant of the service-oriented architecture that arranges an application as a collection of loosely-coupled services. The goal of microservices is to bring services online that are independently deployable. Each microservice runs a unique process and communicates through a well-defined, lightweight mechanism, such as a container, to serve a business goal.<sup>[1](#Sources)</sup>
 
-There are a few different ways on how we can save our microservices to the internet. Generally this is done using a so called [repository](https://en.wikipedia.org/wiki/Repository_(version_control)). Repositories in general host a single code-base. This is what we call a monolothic repository.<sup>[2](###Sources)</sup>
+There are a few different ways on how we can save our microservices to the internet. Generally this is done using a so called [repository](https://en.wikipedia.org/wiki/Repository_(version_control)). Repositories in general host a single code-base. This is what we call a monolothic repository.<sup>[2](#Sources)</sup>
 
 If we follow the monolithic repository principle and apply it to our microservices it would mean that each microservice would need its own repository. This would then be called a [polyrepo](https://github.com/joelparkerhenderson/monorepo-vs-polyrepo#:~:text=Polyrepo%20is%20a%20nickname%20that,repositories%2C%20rather%20than%20one%20repository.&text=Polyrepo%20is%20also%20known%20as%20many%2Drepo%20or%20multi%2Drepo.) (multiple repositores). However, we are going to try to host multiple microservices in the same repository. This is referred to as a [monorepo](https://en.wikipedia.org/wiki/Monorepo).
 
-Using a monorepo to store the multiple code-bases comes with a multitude of advantages and limitations. According to Joel Parker Henderson the following key differences between mono- and polyrepo's are important. We've filtered a few of the most important differences and put them into the table below.<sup>[3](###Sources)[4](###Sources) </sup>
+Using a monorepo to store the multiple code-bases comes with a multitude of advantages and limitations. According to Joel Parker Henderson the following key differences between mono- and polyrepo's are important. We've filtered a few of the most important differences and put them into the table below.<sup>[3](#Sources)[4](#Sources) </sup>
 
 <table>
   <thead>
@@ -162,3 +162,6 @@ If we combine all of the abovementioned information and apply it to our microser
 2. [General explanation of what a repository is - Wiki](https://en.wikipedia.org/wiki/Repository_(version_control))
 3. [Monorepo vs Polyrepo - Joel Parker Henderson](https://github.com/joelparkerhenderson/monorepo-vs-polyrepo)
 4. [Benefits and challenges of using monorepo development practices - CircleCi](https://circleci.com/blog/monorepo-dev-practices/)
+
+## Contributors
+1. [Siem Lucassen](https://github.com/SiemLuc)
