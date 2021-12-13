@@ -37,11 +37,11 @@ public class ActionLog {
     }
 
     public ActionLog(ActionLogDto actionLog) {
-        this.userId = actionLog.getUserId();
-        this.time = actionLog.getTime();
-        this.date = actionLog.getDate();
-        this.category = actionLog.getCategory();
-        this.action = actionLog.getAction();
+        this.userId = actionLog.userId;
+        this.time = actionLog.time;
+        this.date = actionLog.date;
+        this.category = actionLog.category;
+        this.action = actionLog.action;
     }
 
     public Integer getId() { return id; }
