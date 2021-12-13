@@ -162,3 +162,6 @@ If we combine all of the abovementioned information and apply it to our microser
 2. [General explanation of what a repository is - Wiki](https://en.wikipedia.org/wiki/Repository_(version_control))
 3. [Monorepo vs Polyrepo - Joel Parker Henderson](https://github.com/joelparkerhenderson/monorepo-vs-polyrepo)
 4. [Benefits and challenges of using monorepo development practices - CircleCi](https://circleci.com/blog/monorepo-dev-practices/)
+
+## Contributors
+1. [Siem Lucassen](https://github.com/SiemLuc)
