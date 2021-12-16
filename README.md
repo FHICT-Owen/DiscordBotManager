@@ -5,7 +5,7 @@ This project contains multiple microservices and a Discord bot to view user acti
 
 ![Container diagram](https://github.com/FHICT-S-Owen/S3-IPS-DOCS/blob/main/Container_diagram_v2.jpg?raw=true)
 
-To seperate all these containers while using a monorepo there will be seperate subfolders in this repository that contain the different microservices. These microservices will each have their own development branch branch, furthermore commits will only be pulled through to the production branch once they have been properly tested and deployed at least once.
+To seperate all these containers while using a monorepo there will be seperate subfolders in this repository that contain the different microservices. These microservices will each have their own development branch, furthermore commits will only be pulled through to the production branch once they have been properly tested and deployed at least once.
 
 ## Tracking progress & Contributing
 
